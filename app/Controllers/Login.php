@@ -122,7 +122,7 @@ class Login extends BaseController
 
          $save->insert($data);
 
-         return redirect("/");
+         return redirect()->to("/signin");
 
        }
       
