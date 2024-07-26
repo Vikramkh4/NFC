@@ -100,7 +100,7 @@
             </div>
             <div class="card-body">
             
-            <?= form_open(base_url('regischaking')); ?>
+  <form action="<?=base_url('/regischaking') ?>" method="post">
     <?= csrf_field() ?>
     <div class="form-outline mb-3">
         <input type="text" id="form3Example1cg" name="name" class="form-control" placeholder="Your Name" aria-label="Your Name" value='<?= set_value('name') ?>'>
@@ -125,7 +125,7 @@
     <div class="text-center">
         <button type="submit" name="register" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
     </div>
-<?= form_close(); ?>
+    </form>
 
 <p class="text-sm mt-3 mb-0">Already have an account? <a href="<?= site_url('login'); ?>" class="text-dark font-weight-bolder">Sign in</a></p>
 
