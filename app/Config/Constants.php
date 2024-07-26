@@ -92,3 +92,19 @@ define('EVENT_PRIORITY_NORMAL', 100);
  * @deprecated Use \CodeIgniter\Events\Events::PRIORITY_HIGH instead.
  */
 define('EVENT_PRIORITY_HIGH', 10);
+
+define("ADMIN","admin/");
+define("PRIMARY","primary/");
+define("USER","user/");
+
+//for route
+define("AD","admin/");
+define("PR","primary/");
+define("US","user/");
+define("RP","₹");
+
+define("IMAGE_PATH","uploads/Services");
+define("IMAGE_CUMMUNITY","uploads/cummunity");
+define("IMAGE_PATH_PRODUCT","uploads/product");
+define("IMAGE_PATH_MARKET","uploads/market");
+
