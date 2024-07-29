@@ -19,3 +19,5 @@ $routes->group("admin", ["filter" => "auth"], function ($routes) {
     // start admin part
      $routes->get("/", "admin\Admin::index");
     });
+
+$routes->get('/logout','Login::logout');
