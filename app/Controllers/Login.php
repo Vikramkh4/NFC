@@ -12,7 +12,7 @@ class Login extends BaseController
     {
         $data = [];
 
-        if ($this->request->getMethod() == 'post') {
+        if ($this->request->getMethod() == 'POST') {
 
            
             $setRules = ([

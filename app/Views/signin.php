@@ -58,7 +58,7 @@
 </div>
 
                             <div class="card-body">
-                                <form action="<?= base_url('/signin') ?>" method="post">
+                                <form action="<?= base_url('/signin') ?>" method="POST">
                                     <?= csrf_field() ?>
                                     <!-- Email input -->
                                     <div class="mb-3">

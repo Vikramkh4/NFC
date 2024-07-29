@@ -16,11 +16,7 @@ class Admin extends BaseController
             exit;
         }
         $this->empModel = new UserModel();
-        // $this->brand = new BrandModel();
-        // $this->productModel = new ProductModel();
-        //  $this->serviceModel = new ServiceModel();
-        //  $this->categoryModel = new CategoryModel();
-        //  $this->CommunityModel = new CommunityModel();
+      
       
 
     }
@@ -29,11 +25,7 @@ class Admin extends BaseController
     $data['title'] = "Admin | Dashboard";
     $data['page'] = ADMIN."index";
     $data['page_name'] = "Dashboard ";
-//     $data['users'] = $this->empModel->builder()->countAll();
-//    $data['primary'] = $this->empModel->builder()->where("role","primary")->countAllResults();
-//     $data['brands'] = $this->brand->builder()->countAll();
-//     $data['product'] =  $this->productModel->builder()->countAll();
-//     $data['service'] =  $this->serviceModel->builder()->countAll();
+//    
     
     
     

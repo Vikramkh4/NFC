@@ -13,7 +13,7 @@ $routes->setAutoRoute(true);
 
 $routes->get("/signup", "Login::registration_page");
 $routes->post("/regischaking", "Login::saving_registration");
-$routes->match(['POST','GET'] ,"/signin", "Login::index");
+$routes->post("/signin", "Login::index");
 
 $routes->group("admin", ["filter" => "auth"], function ($routes) {
     // start admin part
