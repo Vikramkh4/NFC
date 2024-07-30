@@ -15,14 +15,14 @@
 
     <link rel="stylesheet" href="<?=base_url();?>/assets2/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/font-icons/entypo/css/entypo.css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
+    <link rel="stylesheet" href="fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/bootstrap.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/neon-core.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/neon-theme.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/neon-forms.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/custom.css">
-
     <script src="<?=base_url();?>/assets2/js/jquery-1.11.3.min.js"></script>
+    
 
     <!--[if lt IE 9]><script src="/assets2/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -78,7 +78,7 @@
                     <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                     <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
                     <li class="active ">
-                        <a href="<?=base_url();?>/index.php">
+                        <a href="<?= base_url(AD.'/') ?>">
                             <i class="entypo-gauge"></i>
                             <span class="title">Dashboard</span>
                         </a>
@@ -110,7 +110,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="forms-main.html">
+                        <a href="<?= base_url(AD . 'user') ?>">
                             <i class="entypo-users"></i>
                             <span class="title">Users</span>
                         </a>
@@ -836,6 +836,13 @@
     <script src="<?=base_url();?>/assets2/js/toastr.js"></script>
     <script src="<?=base_url();?>/assets2/js/neon-chat.js"></script>
 
+
+    
+	<!-- Imported scripts on this page -->
+	<script src="<?=base_url();?>/assets2/js/datatables/datatables.js"></script>
+	<script src="<?=base_url();?>/assets2/js/select2/select2.min.js"></script>
+    
+	<script src="<?=base_url();?>/assets2/js/neon-chat.js"></script>
 
     <!-- JavaScripts initializations and stuff -->
     <script src="<?=base_url();?>/assets2/js/neon-custom.js"></script>
