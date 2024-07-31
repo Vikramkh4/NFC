@@ -22,6 +22,14 @@ $routes->group("admin", ["filter" => "auth"], function ($routes) {
      $routes->match(['get','post'],"adduser","admin\Admin::adduser");
      $routes->match(['get','post'],"edituser/(:num)","admin\Admin::edituser/$1");
      $routes->match(['get','post'],"deleteuser/(:num)","admin\Admin::deleteuser/$1");
+
+
+     $routes->get("/amenities", "admin\Amenities::index");
+      
+     $routes->match(['get','post'],"storeamt","admin\Amenities::store_amenities");  
+     $routes->match(['get','post'],"amenity_table","admin\Amenities::show");
+     $routes->match(['get','post'],"edit_amenity/(:num)","admin\Amenities::edit/$1");
+     $routes->match(['get','post'],"delete/(:num)","admin\Amenities::delete/$1");
     });
 
 $routes->get('/logout','Login::logout');

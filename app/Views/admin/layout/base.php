@@ -11,7 +11,9 @@
 
     <link rel="icon" href="<?=base_url();?>/assets/img/logo-ct-dark.png">
 
-    <title>NFC | Dashboard</title>
+    <title>
+    <?= $title ?>
+  </title>
 
     <link rel="stylesheet" href="<?=base_url();?>/assets2/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/font-icons/entypo/css/entypo.css">
@@ -88,6 +90,13 @@
                         <a href="index.html">
                             <i class="entypo-layout"></i>
                             <span class="title">Category</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="<?= base_url(AD . 'amenity_table') ?>">
+                            <i class="entypo-layout"></i>
+                            <span class="title">Amenities</span>
                         </a>
 
                     </li>
