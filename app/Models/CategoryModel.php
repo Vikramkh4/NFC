@@ -6,21 +6,23 @@ use CodeIgniter\Model;
 
 class CategoryModel extends Model
 {
-    protected $DBGroup = 'default'; // Database group name
-    protected $table = 'category'; // Name of the database table
-    protected $primaryKey = 'id'; // Corrected without extra space
-    protected $useAutoIncrement = true; // Auto-increment for the primary key
-    protected $insertID = 0; // Default insert ID
-    protected $returnType = 'array'; // Return data as an array
-    protected $useSoftDeletes = false; // Soft deletes not enabled
-    protected $protectFields = true; // Protect fields from mass assignment
-    protected $allowedFields = [
-        'name', // Removed 'id' since it's typically auto-incremented
-        'brand_id',
-        'description',
-        'creat_date', // Use 'created_at' for consistency
-    ];
+    protected $table      = 'categorynew';
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['parent', 'name', 'slug', 'icon_class', 'thumbnail'];
 
-   
+    public function getCategories($category_id = 0)
+    {
+        if ($category_id > 0) {
+            return $this->where('id', $category_id)->findAll();
+        }
+        return $this->findAll();
+    }
+
+    public function getSubCategories($category_id = 0)
+    {
+        if ($category_id > 0) {
+            return $this->where('parent', $category_id)->where('parent >', '0')->findAll();
+        }
+        return $this->where('parent >', '0')->findAll();
+    }
 }
-

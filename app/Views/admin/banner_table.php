@@ -1,20 +1,6 @@
 <?= $this->extend('admin/layout/base') ?>
 
 <?= $this->section('content') ?>
-
-
-<ol class="breadcrumb bc-3">
-    <li>
-        <a href="index.html"><i class="entypo-home"></i>Home</a>
-    </li>
-    <li>
-        <a href="tables-main.html">Tables</a>
-    </li>
-    <li class="active">
-        <strong>User Data</strong>
-    </li>
-</ol>
-
 <style>
     .right-align {
     display: flex;
@@ -23,23 +9,34 @@
 }
 
 .right-align .btn {
-    margin-right: 3px; /* Adjusts the right margin */
-    margin-top: 10px;  /* Adjust this value to move the button down */
+    margin-right: 10px; /* Adjusts the right margin */
+    margin-top: 0px;  /* Adjust this value to move the button down */
 }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h1 class="panel-title"> <b><h4><i class="entypo-right-circled"></i>USER DATA</h4></b></h1>
-                <div class="right-align my-3">
-                <a href="<?=base_url(AD.'adduser')?>" class="btn btn-default btn-icon icon-left">
-                        Add User
-                        <i class="entypo-user-add"></i>
-                    </a>
-            </div>
 
+<hr style="margin-top:0px;" />
+
+<div class="row">
+    <div class="col-lg-12">
+    <h3  class="hidden-print">
+    <i class="entypo-right-circled"></i>
+    Banners
+   </h3>
+   <div class="right-align ">
+        <a href="<?= base_url('/admin/banner') ?>" class="btn btn-primary alignToTitle" ><i class="entypo-plus"></i>Add New Banner</a>
+    </div><br>
+    </div><!-- end col-->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary" data-collapsed="0">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h4><b>Banner List</b></h4>
+                </div>
+            </div>
+            <div class="panel-body">
 <script type="text/javascript">
 jQuery(document).ready(function($) {
     var $table1 = jQuery('#table-1');
@@ -67,59 +64,54 @@ jQuery(document).ready(function($) {
     });
 });
 </script>
-
-
-<table class="table table-bordered datatable" id="table-1">
-    <thead>
+                <table class="table table-bordered datatable" id="table-1" >
+                    <thead>
+                        <tr>
+                            <th width="50"><div>#</div></th>
+                            <th width="80"><div>Image</div></th>
+                            <th><div>Title</div></th>
+                            <th><div>Description</div></th>
+                            <th width="180"><div>Option</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $counter = 0;
+                        foreach ($banners as $banner): ?>
+                            <tr>
+                                <td><?= ++$counter; ?></td>
+                                <td class="text-center">
+									<img class="rounded-circle" src="<?= base_url('./uploads/banner_image/' . $banner['image']); ?>" alt="" style="height: 50px; width: 50px;">
+								</td>
+                                <td><?= $banner['title']; ?></td>
+                                <td><?= $banner['description']; ?></td>
+                                <td style="text-align: center;">
+                                    <a href="<?= base_url('/admin/edit_banner/' . $banner['id']); ?>" class="btn btn-default btn-sm btn-icon icon-left">
+                                        <i class="entypo-pencil"></i>
+                                        Edit
+                                    </a>
+                                    <a data-href="<?= base_url('admin/banner/delete/' . $banner['id']); ?>" class="btn btn-danger btn-sm btn-icon icon-left confirm_del_btn" data-id="<?= $banner['id'] ?>">
+                                    <i class="entypo-cancel"></i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                    <tfoot>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone No</th>
-            <th>Role</th>
-            <th>Brand</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($users as $key => $emp): ?>
-        <tr>
-            <td><?= $key + 1 ?></td>
-            <td><?= $emp['name'] ?></td>
-            <td><?= $emp['email'] ?></td>
-            <td><?= $emp['phone_no'] ?></td>
-            <td><?= $emp['role'] ?></td>
-            <td>
-                <a href="<?= base_url(AD); ?>brtable?user_id=<?= $emp['user_id'] ?>" class="btn btn-blue btn-icon icon-left">
-                    <i class="entypo-box"></i> Brand
-                </a>
-            </td>
-            <td>
-                <a href="<?= base_url(AD); ?>edituser/<?= $emp['user_id'] ?>" class="btn btn-default btn-sm btn-icon icon-left">
-                    <i class="entypo-pencil"></i> Edit
-                </a>
-                <a data-href="<?= base_url(AD."deleteuser/".$emp['user_id']); ?>" class="btn btn-danger btn-sm btn-icon icon-left confirm_del_btn" data-id="<?= $emp['user_id'] ?>">
-                    <i class="entypo-cancel"></i> Delete
-                </a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone No</th>
-            <th>Role</th>
-            <th>Brand</th>
-            <th>Actions</th>
+        <th width="50"><div>#</div></th>
+                            <th width="80"><div>Image</div></th>
+                            <th><div>Title</div></th>
+                            <th><div>Description</div></th>
+                            <th width="180"><div>Option</div></th>
         </tr>
     </tfoot>
-</table>
+                </table>
+            </div>
+        </div>
+    </div><!-- end col-->
 </div>
-</div>
-
 <!-- Imported styles on this page -->
 <link rel="stylesheet" href="<?=base_url();?>assets2/js/datatables/datatables.css">
 <link rel="stylesheet" href="<?=base_url();?>assets2/js/select2/select2-bootstrap.css">
@@ -128,7 +120,6 @@ jQuery(document).ready(function($) {
 
 <!-- Imported scripts on this page -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script>
 $(document).ready(function() {
     $('.confirm_del_btn').click(function(e) {
