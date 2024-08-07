@@ -50,7 +50,7 @@
 
                     <!-- logo -->
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="<?= base_url(AD.'/') ?>">
                             <img src="<?=base_url();?>/assets/img/logoh.png" class="navbar-brand-img h-32px"
                                 alt="main_logo" width="50px" style="background-color:aliceblue">
 
