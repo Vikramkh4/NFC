@@ -96,6 +96,38 @@ $routes->match(['get','post'],"usercommunity","admin\Ucommu::view_usercommunity"
 $routes->match(['get','post'],"usercommunityupdate/(:num)","admin\Ucommu::update_cummnunity/$1");
 $routes->match(['get','post'],"cummunitytable","admin\Ucommu::table");
     });
+    $routes->group("hki", ["filter" => "auth"], function ($routes) {
+        $routes->match(['get','post'],"/", "hki\VendorController::index");
+         $routes->match(['get','post'],"user","hki\VendorController::viewEmp");
+      //  $routes->match(['get','post'],"edituser/(:num)","hki\hki::edituser/$1");
+      //  $routes->match(['get','post'],"adduser","hki\hki::adduser");
+      //  $routes->match(['get','post'],"deleteuser/(:num)","hki\hki::deleteuser/$1");
+       $routes->match(['get','post'],"update_profile","hki\Profile::update_profile");
+       
+       
+       $routes->match(['get','post'], "deletebrand2/(:num)", "hki\Brand::deletebrand/$1");
+       $routes->match(['get', 'post'], 'addBrand2', 'hki\Brand::addbrand');
+       $routes->match(['get','post'], "brand2", "hki\Brand::viewBrand");
+       $routes->match(['get','post'], "editbrand2/(:num)", "hki\Brand::editbrand/$1");
+       
+      
+       $routes->match(['get','post'],"profile","hki\Profile::profileview");
+      //start product part
+      $routes->match(['get', 'post'], "product2", "hki\Product::addproduct");
+      $routes->match(['get', 'post'], "prtable2", "hki\Product::viewProduct");
+      $routes->match(['get', 'post'], "editproduct2/(:num)", "hki\Product::editProduct/$1");
+      $routes->match(['get', 'post'], "deleteproduct2/(:num)", "hki\Product::deleteproduct/$1");
+      
+       //end product part
+       //start service part
+      $routes->match(['get','post'],"services2","hki\Services::addservice");
+       $routes->match(['get','post'],"srtable2","hki\Services::viewServices");
+       $routes->match(['get','post'],"editservices2/(:num)","hki\Services::editServices/$1");
+       $routes->match(['get','post'],"deleteservices2/(:num)","hki\Services::deleteServices/$1");
+       //end service part
+       $routes->match(['get','post'],"product3","hki\Product::get_allproduct");
+       $routes->match(['get','post'],"allService2","hki\Services::get_allService");
+      });
 
 $routes->get('/logout','Login::logout');
 $routes->group("user",["filter"=>"auth"],function($routes){

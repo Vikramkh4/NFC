@@ -15,8 +15,8 @@ class Noauth implements FilterInterface
 				return redirect()->to(base_url('admin'));
 			}
 
-			elseif (session()->get('role') == "primary") {
-				return redirect()->to(base_url('primary'));
+			elseif (session()->get('role') == "vendor") {
+				return redirect()->to(base_url('vendor'));
 			}
             else{
                 return redirect()->to(base_url("user"));
