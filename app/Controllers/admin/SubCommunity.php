@@ -24,31 +24,39 @@ class SubCommunity extends BaseController
 public function view_subcommunity(){
     $data['title'] = "Admin | Sub Community";
     $data['page_name'] = "Sub Community View";
-    $data['community'] = $this->subcommunityModel->findAll();
+    $data['page'] = ADMIN . "subcomunity_tb";
+   
+   
     
-    if($this->request->getMethod() == 'POST'){
-        // Handle form submission if needed
-    } else {
-        $data['page'] = ADMIN . "subcomunity_tb"; // Assuming this is the view file name
-        return view($data['page'], $data);
+    $community_id = $this->request->getGetPost("community_id");
+    $bra = new CommunityModel();
+    $list  = $bra->find($community_id);
+    if(isset($list) && !empty($list)){
+    $data['community']=$this->subcommunityModel->where("community_id",$community_id)->find();
+    }else{
+     return view($data['page'],$data);
     }
+  return view($data['page'],$data);
+   
 }
 
-    public function add_subcommunity()
-    {
+public function add_subcommunity() {
         $data['title'] = "Admin | Add SubCommunity";
         $data['page_name'] = "addsubcommunity";
 
+       
         if ($this->request->getMethod() == 'POST') {
             $logoFile = $this->request->getFile('image');
-            $community_id = $this->request->getVar("community_id");
+            $community_id = $this->request->getGetPost("community_id");
+           
             $newName = "";
-
-            if ($logoFile && $logoFile->isValid() && !$logoFile->hasMoved()) {
+            $logoFile = $this->request->getFile('image');
+            if ($logoFile->isValid() && !$logoFile->hasMoved()) {
                 $newName = $logoFile->getRandomName();
                 $logoFile->move(IMAGE_CUMMUNITY, $newName);
             }
 
+           
             $dataToAdd = [
                 'community_id' => $community_id,
                 'image' => $newName,
@@ -59,23 +67,22 @@ public function view_subcommunity(){
                'create_date' => $this->request->getPost('createddate'),
 
             ];
-     
-   
-            if ($this->subcommunityModel->insert($dataToAdd)) {
+            if ($this->subcommunityModel->insert($dataToAdd)) {                
                 session()->setFlashdata('success', 'SubCommunity successfully added');
-                
                 return redirect()->to(base_url("admin/subcommunity?community_id={$community_id}"));
             } else {
                 $data['errors'] = $this->subcommunityModel->errors();
-                return view('admin/addsubcommunity', $data);
+                $data['page'] = ADMIN . "addsubcommunity";
+                return view($data['page'], $data);
             }
         } else {
-            $community_id = $this->request->getVar("community_id");
-            $data['page'] = 'admin/addsubcommunity';
-            $data['community_id'] = $community_id;
-            return view('admin/addsubcommunity', $data);
+            $data['page'] = ADMIN . "addsubcommunity";
+            return view($data['page'], $data);
         }
-    }
+   
+           
+        } 
+    
 
 
 

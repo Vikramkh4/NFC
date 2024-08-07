@@ -22,7 +22,7 @@
     <div class="col-md-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                < class="panel-title"><b><h3><i class="entypo-right-circled"></i> <?= $page_name ?></h3></b></h1>
+                <h1 class="panel-title"><b><h3><i class="entypo-right-circled"></i> <?= $page_name ?></h3></b></h1>
                 <div class="right-align my-3">
                     <a href="<?= base_url(AD . 'addsubcommunity?community_id='.$_GET['community_id'].'') ?>" class="btn btn-default btn-icon icon-left">
                         Add Sub Community
