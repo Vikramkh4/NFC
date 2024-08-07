@@ -9,6 +9,8 @@ use App\Models\Brand_product;
 class Product extends BaseController
 {
   public $productModel;
+  public $Brand_product;
+
   public function __construct()
   {
       if (session()->get('role') != "admin") {
