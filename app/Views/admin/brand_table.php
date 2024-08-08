@@ -109,7 +109,11 @@ jQuery(document).ready(function($) {
                                     <td><?= $emp['address'] ?></td>
                                     <td><a target="_blank" href="<?= $emp['website'] ?>">Website</a></td>
                                     <td><a target="_blank" href="<?= $emp['google_review'] ?>">Reviews</a></td>
-                                    <td><a target="_blank" href="<?= $emp['enqlink'] ?>">Enquire Link</a></td>
+                                    <td>
+                                    <a href="<?= base_url(AD); ?>enquiryview?brand_id=<?=$emp['id']?>" class="btn btn-blue btn-icon icon-left">
+                                            <i class="entypo-suitcase"></i> Enquire Link
+                                        </a>
+                                </td>
                                     <td>
                                         <a href="<?= $emp['twitter'] ?>"><i class="entypo-twitter"></i></a>
                                         <a href="<?= $emp['instagram'] ?>"><i class="entypo-instagram"></i></a>
