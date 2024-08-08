@@ -46,18 +46,18 @@ class Login extends BaseController
 
                 $user = $model->where('email', $this->request->getPost('email'))
                     ->first();
-       
+                
                 // Strong session values
                 $this->setUserSession($user);
-
+           
                 // Redirecting to dashboard after login
                 if($user['role'] == "admin"){
             
                     return redirect()->to(base_url('admin'));
 
-                }elseif($user['role'] == "primary"){
-
-                    return redirect()->to(base_url('primary'));
+                }elseif($user['role'] == "vendor"){
+                     
+                  return redirect()->to(base_url('hki'));
                 }
                 else if($user['role'] == "user"){
                     return redirect()->to(base_url('user'));
@@ -78,11 +78,14 @@ class Login extends BaseController
             "role" => $user['role'],
             "user_id"=>$user['user_id']
            
-           
+ 
         ];
-
+session()->get("id");
         session()->set($data);
+        
         return true;
+
+
     }
 
 
@@ -122,7 +125,7 @@ class Login extends BaseController
 
          $save->insert($data);
 
-         return redirect()->to("/signin");
+         return redirect()->to("/login");
 
        }
       

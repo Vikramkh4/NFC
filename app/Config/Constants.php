@@ -94,12 +94,12 @@ define('EVENT_PRIORITY_NORMAL', 100);
 define('EVENT_PRIORITY_HIGH', 10);
 
 define("ADMIN","admin/");
-define("PRIMARY","primary/");
+define("VENDOR","vendor/");
 define("USER","user/");
 
 //for route
 define("AD","admin/");
-define("PR","primary/");
+define("VD","hki/");
 define("US","user/");
 define("RP","₹");
 
