@@ -114,9 +114,12 @@ class Enquiry extends BaseController
     }
     public function updateStatus($id)
     {
-        $brand_id = $this->request->getGet('brand_id');
+       
         $model = new EnquiryModel();
-
+           
+        $Enquiry  =$model->find($id);
+        $brand_id = $Enquiry['brand_id'];
+       
         // Validate the status input
         $status = $this->request->getPost('status');
 
