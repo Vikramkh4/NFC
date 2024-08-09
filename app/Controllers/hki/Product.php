@@ -154,7 +154,7 @@ class Product extends BaseController
         ->where('brand.u_id', $user_id)
         ->findAll();
     
-    return view("vendor/allproduct", $data);
+    return view(VENDOR."allproduct", $data);
 }
 
 }

@@ -32,7 +32,7 @@ class VendorController extends BaseController
     public function index()
     {   
         $data['title'] = "Vendor | Dashboard";
-        $data['page'] = 'vendor/index'; 
+        $data['page'] = VENDOR.'index'; 
         $data['page_name'] = "Dashboard";
 
         // Get total counts
@@ -63,7 +63,7 @@ class VendorController extends BaseController
     public function viewEmp()
     {
         $data['title'] = "Vendor | Users";
-        $data['page'] = 'vendor/usertable'; // Ensure this path is correct
+        $data['page'] = VENDOR.'usertable'; // Ensure this path is correct
         $data['page_name'] = "Users";
 
         return view($data['page'], $data);
@@ -72,7 +72,7 @@ class VendorController extends BaseController
     public function addUser()
     {
         $data['title'] = "Vendor | Add User";
-        $data['page'] = 'vendor/adduser'; // Ensure this path is correct
+        $data['page'] = VENDOR.'adduser'; // Ensure this path is correct
         $data['page_name'] = "Add User";
 
         if ($this->request->getMethod() == 'post') {
@@ -86,7 +86,7 @@ class VendorController extends BaseController
 
             if ($this->empModel->save($dataToAdd)) {
                 session()->setFlashdata('success', 'User successfully added');
-                return redirect()->to('/vendor/user'); // Adjust URL as necessary
+                return redirect()->to('/VENDOR.user'); // Adjust URL as necessary
             } else {
                 $data['errors'] = $this->empModel->errors();
                 return view($data['page'], $data);
@@ -99,7 +99,7 @@ class VendorController extends BaseController
     public function editUser($id = null)
     {
         $data['title'] = "Vendor | Edit User";
-        $data['page'] = 'vendor/edituser'; // Ensure this path is correct
+        $data['page'] = VENDOR.'edituser'; // Ensure this path is correct
         $data['page_name'] = "Edit User";
 
         if ($this->request->getMethod() == 'post') {
@@ -134,6 +134,6 @@ class VendorController extends BaseController
             session()->setFlashdata('error', 'Failed to delete employee');
         }
 
-        return redirect()->to('/vendor/user'); // Adjust URL as necessary
+        return redirect()->to('/VENDOR.user'); // Adjust URL as necessary
     }
 }

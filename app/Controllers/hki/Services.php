@@ -162,7 +162,7 @@ public function editServices($id = null)
         ->where('brand.u_id', $user_id)
         ->findAll();
     
-    return view("vendor/allservices", $data);
+    return view(VENDOR."allservices", $data);
 }
         
     

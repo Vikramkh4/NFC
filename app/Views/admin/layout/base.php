@@ -132,12 +132,7 @@
                             <span class="title">Community</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="mailbox.html">
-                            <i class="entypo-basket"></i>
-                            <span class="title">Market</span>
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="<?= base_url(AD . 'user') ?>">
                             <i class="entypo-users"></i>
