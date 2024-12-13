@@ -45,7 +45,8 @@ public function addservice()
             ];
             if ($this->Brand_service->insert($brand2)) {
                 session()->setFlashdata('success', 'Services successfully added');
-                return redirect()->to("admin/services?brand_id=$brand_id");
+                return redirect()->to(AD ."srtable?brand_id=".$brand_id);
+
             } else {
                 $data['errors'] = $this->Brand_service->errors();
             }

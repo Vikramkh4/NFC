@@ -32,7 +32,7 @@ class VendorController extends BaseController
     public function index()
     {   
         $data['title'] = "Vendor | Dashboard";
-        $data['page'] = VENDOR.'index'; 
+        $data['page'] = VENDOR."index"; 
         $data['page_name'] = "Dashboard";
 
         // Get total counts
@@ -69,7 +69,7 @@ class VendorController extends BaseController
         return view($data['page'], $data);
     }
 
-    public function addUser()
+   /* public function addUser()
     {
         $data['title'] = "Vendor | Add User";
         $data['page'] = VENDOR.'adduser'; // Ensure this path is correct
@@ -136,4 +136,5 @@ class VendorController extends BaseController
 
         return redirect()->to('/VENDOR.user'); // Adjust URL as necessary
     }
+*/
 }

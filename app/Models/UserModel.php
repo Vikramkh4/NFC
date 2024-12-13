@@ -19,6 +19,7 @@ class UserModel extends Model
 		"email",
 		"phone_no",
 		"password",
+		"image",
 		"token",
 		"token_key",
 		"role",

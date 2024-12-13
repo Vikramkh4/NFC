@@ -104,7 +104,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="logo" class="form-control-label">Upload Logo<span class='text-success text-sm'>*</span></label>
-                <input type="file" id="logo" class="form-control-file" name="logo">
+                <input type="file" id="logo" class="form-control-file" name="logo" required>
             </div>
             <div><img id="preview-image" class="ll"></div>
         </div>
@@ -126,12 +126,12 @@
         </div>
 
         <!-- Google Review Link Input -->
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="google_review" class="form-control-label">Google Review Link</label>
-                <input class="form-control" type="url" name="google_review" placeholder="Google Review Link">
-            </div>
-        </div>
+        <!--<div class="col-md-6">-->
+        <!--    <div class="form-group">-->
+        <!--        <label for="google_review" class="form-control-label">Google Review Link</label>-->
+        <!--        <input class="form-control" type="url" name="google_review" placeholder="Google Review Link">-->
+        <!--    </div>-->
+        <!--</div>-->
 
         <!-- Whatsapp Number Input -->
         <div class="col-md-6">
@@ -142,12 +142,12 @@
         </div>
 
         <!-- Enquire Link Input -->
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="enqlink" class="form-control-label">Enquire Link</label>
-                <input class="form-control" type="url" name="enqlink" placeholder="Enquire Link">
-            </div>
-        </div>
+        <!--<div class="col-md-6">-->
+        <!--    <div class="form-group">-->
+        <!--        <label for="enqlink" class="form-control-label">Enquire Link</label>-->
+        <!--        <input class="form-control" type="url" name="enqlink" placeholder="Enquire Link">-->
+        <!--    </div>-->
+        <!--</div>-->
 
         <!-- Social Media Links Input -->
         <div class="col-md-6">

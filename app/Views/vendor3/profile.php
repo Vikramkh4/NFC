@@ -1,28 +1,13 @@
-  <?= $this->extend('vendor3/layouts/main') ?>
+<?= $this->extend('vendor3/layouts/main') ?>
 
 <?= $this->section('content') ?>
-  
-  
-      <div class="container-fluid py-4">
-        <div class="row">
-   
-          <div class="col-md-8">
-            <div class="card">
-                         <?php if(session()->get("success")):?>
-            <div class="alert alert-success" role="alert">
- <?=session()->get("success")?>
-</div>
-        <?php endif;?>
-        <div class="row">
-    <div class="col-md-12">
 
-        <div class="panel panel-primary" data-collapsed="0">
 
+<div class="row">
+    <div class="col-sm-3">
+        <div class="panel panel-default">
             <div class="panel-heading">
-                <div class="panel-title">
-                    <h2><i class="entypo-right-circled"></i>Profile</h2>
-                </div>
-
+                <div class="panel-title"><b>Profile</b></div>
                 <div class="panel-options">
                     <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i
                             class="entypo-cog"></i></a>
@@ -31,65 +16,182 @@
                     <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
                 </div>
             </div>
-
             <div class="panel-body">
-       <form action="<?=base_url(VD."update_profile")?>" method="POST">
-         <input type="hidden" value="<?=$profile['user_id']?>" name="id" />
-              <div class="card-body">
-                <!--<p class="text-uppercase text-sm">User Information</p>-->
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="example-text-input" class="form-control-label"
-                        >Username</label
-                      >
-                      <input
-                        class="form-control"
-                        type="text"
-                        name="name"
-                        value="<?=$profile['name']?>"
-                      />
+
+                <div class="profile">
+                    <div class="avatar-container">
+                        <img src="<?= base_url('uploads/' . ($profile['image'] ? $profile['image'] : 'default-avatar.png')) ?>"
+                            class="avatar" alt="Profile Image">
                     </div>
-                  </div>
-                  <div class="col-md-6">
+                    <h4><b><?= isset($profile['name']) ? $profile['name'] : ''; ?></b></h4>
+                    <h6><?= isset($profile['role']) ? $profile['role'] : ''; ?></h6>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <b>Phone</b>
+                            <span
+                                class="pull-right"><?= isset($profile['phone_no']) ? $profile['phone_no'] : ''; ?></span>
+                        </li>
+                    </ul>
+                    <br>
                     <div class="form-group">
-                      <label for="example-text-input" class="form-control-label"
-                        >Email address</label
-                      >
-                      <input
-                        class="form-control"
-                        type="email"
-                        name="email"
-                        value="<?=$profile['email']?>"
-                      />
+                       
+                        <a href="<?= base_url(VD . 'update_profile' ) ?>" class="btn btn-primary form-control">
+    UPDATE
+</a>
+
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="example-text-input" class="form-control-label"
-                        >Phone No</label
-                      >
-                      <input class="form-control" name="phone_no" type="text" value="<?=$profile['phone_no']?>" />
-                    </div>
-                  </div>
-                     <div class="col-md-6">
-                    <div class="form-group">
-                   
-                      
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                   
-                      <input  class="btn btn-primary form-control" type="submit" value="Submit" />
-                    </div>
-                  </div>
-            </form>      
-                 
+
                 </div>
-              
-      </div>
+            </div>
+        </div>
     </div>
-    
-    
-    <?= $this->endSection() ?>
+
+    <div class="col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <ul class="nav nav-tabs">
+                        <!-- available classes "bordered", "right-aligned" -->
+                        <li class="active">
+                            <a href="#brand" data-toggle="tab">
+                                <span class="hidden-xs">Brands</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product" data-toggle="tab">
+                                <span class="hidden-xs">Products</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#services" data-toggle="tab">
+                                <span class="hidden-xs">Services</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-options">
+                    
+                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                    <a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
+                    <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="brand">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered datatable" id="table-1">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone No</th>
+                                    <th>Address</th>
+                                    <th>Website</th>
+                                    <th>View</th>
+                                    <th>Social Media</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        <?php foreach ($brands as $key => $emp): ?>
+                                <tr>
+                                    <td><?= $key + 1 ?></td>
+                                    <td><?= $emp['name'] ?></td>
+                                    
+                                    <td><?= $emp['email'] ?></td>
+                                    <td><?= $emp['phone_no'] ?></td>
+                                    <td><?= $emp['address'] ?></td>
+                                    <td><a target="_blank" href="<?= $emp['website'] ?>">Website</a></td>
+                                    <td><a href="<?= base_url(AD); ?>brtable?user_id=<?=$emp['u_id']?>" class="btn btn-blue  ">
+                                        View More</a></td>
+                                    <td>
+                                        <a href="<?= $emp['twitter'] ?>"><i class="entypo-twitter"></i></a>
+                                        <a href="<?= $emp['instagram'] ?>"><i class="entypo-instagram"></i></a>
+                                        <a href="<?= $emp['facebook'] ?>"><i class="entypo-facebook"></i></a>
+                                        <a href="<?= $emp['others'] ?>"><i class="entypo-flickr"></i></a>
+                                    </td>
+                                    <td>
+                                        
+                                        <a data-href="<?= base_url(AD); ?>deletebrand/<?=$emp['id']?>" class="confirm_del_btn btn btn-danger btn-sm btn-icon icon-left">
+                                            <i class="entypo-cancel"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="product">
+                    <table class="table table-bordered datatable" id="table-1">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Image</th>
+                                <th>Product</th>
+                                <th>Details</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    <?php foreach ($products as $key => $emp): ?>
+            <tr>
+                <td><?= $key + 1 ?></td>
+                <td>
+                    <img src="<?= base_url("/uploads/product/$emp[image]") ?>" alt="Product Image" style="height: 60px; width: 80px;">
+                </td>
+                <td><?= $emp['product'] ?></td>
+                <td><?= $emp['details'] ?></td>
+                <td><?= $emp['price'] ?></td>
+                <td>
+                    <button data-href="<?= base_url(AD . 'deleteproduct/' . $emp['id']) ?>" class="btn btn-danger btn-sm btn-icon icon-left confirm_del_btn">
+                        <i class="entypo-cancel"></i>
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="services">
+                    <table class="table table-bordered datatable" id="table-1">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Details</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    <?php foreach ($services as $key => $emp): ?>
+            <tr>
+                <td><?= $key + 1 ?></td>
+                <td>
+                    <img class="image" width="120" height="120" src="<?= base_url("./uploads/Services/" . $emp['image']) ?>" alt="Service Image" style="height: 60px; width: 80px;" />
+                </td>
+                <td><?= $emp['name'] ?></td>
+                <td><?= $emp['details'] ?></td>
+                <td>
+                    <button data-href="<?= base_url(AD . 'deleteservices/' . $emp['id']) ?>" class="btn btn-danger btn-sm btn-icon icon-left confirm_del_btn">
+                        <i class="entypo-cancel"></i>
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection() ?>

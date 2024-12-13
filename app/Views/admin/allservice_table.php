@@ -4,28 +4,24 @@
 
 <ol class="breadcrumb bc-3">
     <li>
-        <a href="index.html"><i class="entypo-home"></i>Home</a>
+        <a href="<?= base_url(AD . '/') ?>"><i class="entypo-home"></i>Home</a>
     </li>
     <li>
-        <a href="tables-main.html">Tables</a>
+        <a href="#">Tables</a>
     </li>
     <li class="active">
         <strong>All Services Table</strong>
     </li>
 </ol>
 
-
-    
-    <h3  class="hidden-print">
+<h3 class="hidden-print">
     <i class="entypo-right-circled"></i>
     All Services
-   </h3>
-    
-
+</h3>
 
 <script type="text/javascript">
-jQuery(document).ready(function($) {
-    var $table1 = jQuery('#table-1');
+$(document).ready(function() {
+    var $table1 = $('#table-1');
 
     // Initialize DataTable with all combined options
     $table1.DataTable({
@@ -55,6 +51,8 @@ jQuery(document).ready(function($) {
     <thead>
         <tr>
             <th width="50">ID</th>
+            <th>Owner Name</th>
+            <th>Brand Name</th>
             <th>Image</th>
             <th>Name</th>
             <th>Details</th>
@@ -66,12 +64,40 @@ jQuery(document).ready(function($) {
             <tr>
                 <td><?= $key + 1 ?></td>
                 <td>
-                    <img class="image" width="120" height="120" src="<?= base_url("./uploads/Services/" . $emp['image']) ?>" alt="Service Image" style="height: 60px; width: 80px;" />
+                    <?php
+                    // Fetch brand based on brand_id
+                    $brandModel = new \App\Models\BrandModel();
+                    $brand = $brandModel->find($emp['brand_id']);
+
+                    // Ensure brand_id exists and retrieve u_id
+                    if ($brand && isset($brand['u_id'])) {
+                        $userModel = new \App\Models\UserModel();
+                        $user = $userModel->find($brand['u_id']);
+                        echo $user['name'] ?? "Null";
+                    } else {
+                        echo "Null";
+                    }
+                    ?>
+                </td>
+                <td>
+                    <?php
+                    // Ensure brand_id exists before using it
+                    if (isset($emp['brand_id'])) {
+                        $brandModel = new \App\Models\BrandModel();
+                        $brand = $brandModel->find($emp['brand_id']);
+                        echo $brand['name'] ?? "Null";
+                    } else {
+                        echo "Null";
+                    }
+                    ?>
+                </td>
+                <td>
+                    <img class="image" width="120" height="120" src="<?= base_url("uploads/Services/" . $emp['image']) ?>" alt="Service Image" style="height: 60px; width: 80px;" />
                 </td>
                 <td><?= $emp['name'] ?></td>
                 <td><?= $emp['details'] ?></td>
                 <td>
-                    <a href="<?= base_url(AD); ?>editservices/<?= $emp['id']."?brand_id=".$emp['brand_id']?>" class="btn btn-default btn-sm btn-icon icon-left">
+                    <a href="<?= base_url(AD . 'editservices/' . $emp['id'] . "?brand_id=" . $emp['brand_id']) ?>" class="btn btn-default btn-sm btn-icon icon-left">
                         <i class="entypo-pencil"></i>
                         Edit
                     </a>
@@ -86,6 +112,8 @@ jQuery(document).ready(function($) {
     <tfoot>
         <tr>
             <th>ID</th>
+            <th>Owner Name</th>
+            <th>Brand Name</th>
             <th>Image</th>
             <th>Name</th>
             <th>Details</th>
@@ -95,9 +123,9 @@ jQuery(document).ready(function($) {
 </table>
 
 <!-- Imported styles on this page -->
-<link rel="stylesheet" href="<?= base_url(); ?>assets2/js/datatables/datatables.css">
-<link rel="stylesheet" href="<?= base_url(); ?>assets2/js/select2/select2-bootstrap.css">
-<link rel="stylesheet" href="<?= base_url(); ?>assets2/js/select2/select2.css">
+<link rel="stylesheet" href="<?= base_url('assets2/js/datatables/datatables.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets2/js/select2/select2-bootstrap.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets2/js/select2/select2.css') ?>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 <!-- Imported scripts on this page -->
@@ -105,7 +133,7 @@ jQuery(document).ready(function($) {
 
 <script>
 $(document).ready(function() {
-    $('.confirm_del_btn').click(function(e) {
+    $('.confirm_del_btn').on('click', function(e) {
         e.preventDefault();
         var href = $(this).data('href');
         Swal.fire({

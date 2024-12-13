@@ -96,6 +96,7 @@ define('EVENT_PRIORITY_HIGH', 10);
 define("ADMIN","admin/");
 define("VENDOR","vendor3/");
 define("USER","user/");
+define("IMAGE_PATH_BANNER","uploads/banner_image");
 
 //for route
 define("AD","admin/");

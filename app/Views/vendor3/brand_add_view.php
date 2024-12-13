@@ -98,21 +98,13 @@
             </div>
         </div>
         <!-- Google Review Link Input -->
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="google_review" class="form-control-label">Google Review Link</label>
-                <input class="form-control" type="url" name="google_review" placeholder="New York">
-            </div>
+        
         </div> <div class="col-md-6">
             <div class="form-group">
                 <label for="whatsapp_no" class="form-control-label">Whatsapp No.</label>
                 <input class="form-control" type="text" name="whatsapp_no" placeholder="Whatapp">
             </div>
-        </div> <div class="col-md-6">
-            <div class="form-group">
-                <label for="enqlink" class="form-control-label">Enquire Link </label>
-                <input class="form-control" type="url" name="enqlink" placeholder="Form Link ">
-            </div>
+        
         </div> <div class="col-md-6">
             <div class="form-group">
                 <label for="twitter	" class="form-control-label">Twitter</label>

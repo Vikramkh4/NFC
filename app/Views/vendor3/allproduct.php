@@ -4,7 +4,7 @@
 
 <ol class="breadcrumb bc-3">
     <li>
-        <a href="index.html"><i class="entypo-home"></i>Home</a>
+        <a href="<?= base_url(VD.'/') ?>"><i class="entypo-home"></i>Home</a>
     </li>
     <li>
         <a href="tables-main.html">Tables</a>
@@ -68,8 +68,9 @@ jQuery(document).ready(function($) {
                 <td><?= $emp['details'] ?></td>
                 <td><?= $emp['price'] ?></td>
                 <td>
-                    <a href="<?= base_url(VD . 'editproduct2/' . $emp['id'] . '?brand_id=' . (isset($_GET['brand_id']) ? $_GET['brand_id'] : '')) ?>" class="btn btn-default btn-sm btn-icon icon-left">
+                    <a href="<?= base_url(VD); ?>editproduct2/<?= $emp['id']."?brand_id=".$emp['brand_id']?>" class="btn btn-default btn-sm btn-icon icon-left">
                         <i class="entypo-pencil"></i>
+                        
                         Edit
                     </a>
                     <button data-href="<?= base_url(VD . 'deleteproduct2/' . $emp['id']) ?>" class="btn btn-danger btn-sm btn-icon icon-left confirm_del_btn">

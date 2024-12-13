@@ -4,7 +4,7 @@
 
 <ol class="breadcrumb bc-3">
     <li>
-        <a href="index.html"><i class="entypo-home"></i>Home</a>
+        <a href="<?= base_url(AD.'/') ?>"><i class="entypo-home"></i>Home</a>
     </li>
     <li>
         <a href="tables-main.html">Tables</a>
@@ -108,7 +108,8 @@ jQuery(document).ready(function($) {
                                     <td><img src="<?=base_url("/uploads/$emp[logo]")?>" width="70" alt="logo"></td>
                                     <td><?= $emp['address'] ?></td>
                                     <td><a target="_blank" href="<?= $emp['website'] ?>">Website</a></td>
-                                    <td><a target="_blank" href="<?= $emp['google_review'] ?>">Reviews</a></td>
+                                    <td><a href="<?= base_url(AD); ?>blog_list?brand_id=<?=$emp['id']?>" class="btn btn-blue  ">
+                                        Reviews</a></td>
                                     <td>
                                     <a href="<?= base_url(AD); ?>enquiryview?brand_id=<?=$emp['id']?>" class="btn btn-blue btn-icon icon-left">
                                             <i class="entypo-suitcase"></i> Enquire Link

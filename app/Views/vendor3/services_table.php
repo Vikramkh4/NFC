@@ -16,10 +16,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <ol class="breadcrumb bc-3">
     <li>
-        <a href="<?= base_url('index.html') ?>"><i class="entypo-home"></i>Home</a>
+        <a href="<?= base_url(VD.'/') ?>"><i class="entypo-home"></i>Home</a>
     </li>
     <li>
-        <a href="<?= base_url('tables-main.html') ?>">Tables</a>
+        <a href="<?= base_url('') ?>">Tables</a>
     </li>
     <li class="active">
         <strong>Services Table</strong>

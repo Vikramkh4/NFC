@@ -125,6 +125,7 @@ public function editServices($id = null)
             return view($data['page'], $data);
         }
     }
+    
     public function deleteServices($id = null)
     {
         if ($id && $this->serviceModel->delete($id)) {

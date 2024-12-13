@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/neon-theme.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/neon-forms.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/custom.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/style.css">
     <script src="<?=base_url();?>/assets2/js/jquery-1.11.3.min.js"></script>
     
 

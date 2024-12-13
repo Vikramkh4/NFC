@@ -9,8 +9,30 @@
     }
 
     .right-align .btn {
-        margin-right: 2in; /* Adjusts the right margin */
-        margin-top: 10px;  /* Adjust this value to move the button down */
+        margin-right: 10px;
+    margin-top: 10px;  /* Adjust this value to move the button down */
+    }
+
+    /* Optional: Ensure the table is responsive */
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .table thead th {
+        vertical-align: bottom;
+    }
+
+    .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
     }
 </style>
 
@@ -23,7 +45,7 @@
     <div class="col-md-12">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h1 class="panel-title"> <b><?= $page_name ?></b></h1>
+                <h1 class="panel-title"><b><h4><?= $page_name ?></h4></b></h1>
                 <div class="right-align my-3">
                     <a href="<?= base_url('/admin/add_market') ?>" class="btn btn-default btn-icon icon-left">
                         Add Market
@@ -55,10 +77,10 @@
                                             <i class="entypo-pencil"></i>
                                             Edit
                                         </a>
-                                        <a href="<?= base_url("admin/delete_market/" . $market['id']); ?>" data-href="<?= base_url("admin/delete_market/" . $market['id']); ?>" class="btn btn-danger btn-sm btn-icon icon-left confirm_del_btn">
+                                        <bu data-href="<?= base_url("admin/delete_market/" . $market['id']); ?>"  class="btn btn-danger btn-sm btn-icon icon-left confirm_del_btn">
                                             <i class="entypo-cancel"></i>
                                             Delete
-                                        </a>
+                                        </bu>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -91,7 +113,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-$(document).ready(function() {
     $('#marketsTable').DataTable({
         dom: 'Bfrtip',
         buttons: [
@@ -99,9 +120,9 @@ $(document).ready(function() {
         ]
     });
 
+
     $('.confirm_del_btn').click(function(e) {
         e.preventDefault();
-        var userId = $(this).data('id'); 
         var href = $(this).data('href'); 
         Swal.fire({
             title: "Are you sure?",
@@ -142,7 +163,6 @@ $(document).ready(function() {
             }
         });
     });
-});
 </script>
 
 <?= $this->endSection() ?>

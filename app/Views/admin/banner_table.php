@@ -2,15 +2,18 @@
 
 <?= $this->section('content') ?>
 <style>
-    .right-align {
+.right-align {
     display: flex;
     justify-content: flex-end;
-    align-items: center; /* Align items vertically centered */
+    align-items: center;
+    /* Align items vertically centered */
 }
 
 .right-align .btn {
-    margin-right: 10px; /* Adjusts the right margin */
-    margin-top: 0px;  /* Adjust this value to move the button down */
+    margin-right: 10px;
+    /* Adjusts the right margin */
+    margin-top: 0px;
+    /* Adjust this value to move the button down */
 }
 </style>
 
@@ -18,13 +21,14 @@
 
 <div class="row">
     <div class="col-lg-12">
-    <h3  class="hidden-print">
-    <i class="entypo-right-circled"></i>
-    Banners
-   </h3>
-   <div class="right-align ">
-        <a href="<?= base_url('/admin/banner') ?>" class="btn btn-primary alignToTitle" ><i class="entypo-plus"></i>Add New Banner</a>
-    </div><br>
+        <h3 class="hidden-print">
+            <i class="entypo-right-circled"></i>
+            Banners
+        </h3>
+        <div class="right-align ">
+            <a href="<?= base_url('/admin/banner') ?>" class="btn btn-primary alignToTitle"><i
+                    class="entypo-plus"></i>Add New Banner</a>
+        </div><br>
     </div><!-- end col-->
 </div>
 
@@ -37,76 +41,106 @@
                 </div>
             </div>
             <div class="panel-body">
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-    var $table1 = jQuery('#table-1');
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    var $table1 = jQuery('#table-1');
 
-    // Initialize DataTable with all combined options
-    $table1.DataTable({
-        "aLengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        "bStateSave": true,
-        dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ],
-        initComplete: function() {
-            // Initialize Select2 Dropdown after DataTable is created
-            $table1.closest('.dataTables_wrapper').find('select').select2({
-                minimumResultsForSearch: -1
-            });
-        }
-    });
-});
-</script>
-                <table class="table table-bordered datatable" id="table-1" >
+                    // Initialize DataTable with all combined options
+                    $table1.DataTable({
+                        "aLengthMenu": [
+                            [10, 25, 50, -1],
+                            [10, 25, 50, "All"]
+                        ],
+                        "bStateSave": true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copyHtml5',
+                            'excelHtml5',
+                            'csvHtml5',
+                            'pdfHtml5'
+                        ],
+                        initComplete: function() {
+                            // Initialize Select2 Dropdown after DataTable is created
+                            $table1.closest('.dataTables_wrapper').find('select').select2({
+                                minimumResultsForSearch: -1
+                            });
+                        }
+                    });
+                });
+                </script>
+                <table class="table table-bordered datatable" id="table-1">
                     <thead>
                         <tr>
-                            <th width="50"><div>#</div></th>
-                            <th width="80"><div>Image</div></th>
-                            <th><div>Title</div></th>
-                            <th><div>Description</div></th>
-                            <th width="180"><div>Option</div></th>
+                            <th width="50">
+                                <div>#</div>
+                            </th>
+                            <th width="80">
+                                <div>Image</div>
+                            </th>
+                            <th>
+                                <div>Title</div>
+                            </th>
+                            <th>
+                                <div>Description</div>
+                            </th>
+                            <th width="180">
+                                <div>Option</div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $counter = 0;
-                        foreach ($banners as $banner): ?>
-                            <tr>
-                                <td><?= ++$counter; ?></td>
-                                <td class="text-center">
-									<img class="rounded-circle" src="<?= base_url('./uploads/banner_image/' . $banner['image']); ?>" alt="" style="height: 50px; width: 50px;">
-								</td>
-                                <td><?= $banner['title']; ?></td>
-                                <td><?= $banner['description']; ?></td>
-                                <td style="text-align: center;">
-                                    <a href="<?= base_url('/admin/edit_banner/' . $banner['id']); ?>" class="btn btn-default btn-sm btn-icon icon-left">
-                                        <i class="entypo-pencil"></i>
-                                        Edit
-                                    </a>
-                                    <a data-href="<?= base_url('admin/banner/delete/' . $banner['id']); ?>" class="btn btn-danger btn-sm btn-icon icon-left confirm_del_btn" data-id="<?= $banner['id'] ?>">
+    $counter = 0;
+    foreach ($banners as $banner): ?>
+                        <tr>
+                            <td><?= ++$counter; ?></td>
+                            <td class="text-center">
+                                <?php if ($banner['image']): ?>
+                                <img class="rounded-circle"
+                                    src="<?= base_url('./uploads/banner_image/' . $banner['image']); ?>" alt=""
+                                    style="height: 50px; width: 50px;">
+                                <?php else: ?>
+                                No Photo
+                                <?php endif; ?>
+                            </td>
+                            <td><?= $banner['title']; ?></td>
+                            <td><?= $banner['description']; ?></td>
+                            <td style="text-align: center;">
+                                <a href="<?= base_url('/admin/edit_banner/' . $banner['id']); ?>"
+                                    class="btn btn-default btn-sm btn-icon icon-left">
+                                    <i class="entypo-pencil"></i>
+                                    Edit
+                                </a>
+                                <a data-href="<?= base_url('admin/banner/delete/' . $banner['id']); ?>"
+                                    class="btn btn-danger btn-sm btn-icon icon-left confirm_del_btn"
+                                    data-id="<?= $banner['id'] ?>">
                                     <i class="entypo-cancel"></i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
+
                     <tfoot>
-        <tr>
-        <th width="50"><div>#</div></th>
-                            <th width="80"><div>Image</div></th>
-                            <th><div>Title</div></th>
-                            <th><div>Description</div></th>
-                            <th width="180"><div>Option</div></th>
-        </tr>
-    </tfoot>
+                        <tr>
+                            <th width="50">
+                                <div>#</div>
+                            </th>
+                            <th width="80">
+                                <div>Image</div>
+                            </th>
+                            <th>
+                                <div>Title</div>
+                            </th>
+                            <th>
+                                <div>Description</div>
+                            </th>
+                            <th width="180">
+                                <div>Option</div>
+                            </th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
@@ -124,8 +158,8 @@ jQuery(document).ready(function($) {
 $(document).ready(function() {
     $('.confirm_del_btn').click(function(e) {
         e.preventDefault();
-        var userId = $(this).data('id'); 
-        var href = $(this).data('href'); 
+        var userId = $(this).data('id');
+        var href = $(this).data('href');
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -137,7 +171,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url:href,
+                    url: href,
                     method: "POST", // Assuming you use POST for deletion
                     success: function(response) {
                         Swal.fire({

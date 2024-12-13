@@ -1,6 +1,16 @@
 <?= $this->extend('admin/layout/base') ?>
 
 <?= $this->section('content') ?>
+<style>
+.avatar {
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the container */
+    display: block;
+    margin: 0 auto; /* Centers the image horizontally */
+}
+</style>
 
 <div class="row">
     <div class="col-md-8">
@@ -35,8 +45,21 @@
         <?= session()->getFlashdata('success'); ?>
     </div>
 <?php endif;?>
-<?= form_open() ?>
+<?= form_open('', ['enctype' => 'multipart/form-data']) ?>
 
+
+<div class="form-group row">
+                    <label class="col-sm-3 control-label">Profile</label>
+                    <div class="col-sm-6 text-center">
+                    <div class="mt-3">
+                            <img id="profile-image-preview" src="<?= isset($emp['image']) ? base_url('uploads/' . $emp['image']) : '' ?>" class="avatar" alt="Profile Image">
+                        </div>
+                        <div class="input-group">
+                            <input type="file" class="form-control" name="image" onchange="previewImage(event)">
+                        </div>
+                        
+                    </div>
+                </div>
 <div class="form-group row">
     <label class="col-sm-3 control-label">Name</label>
     <div class="col-sm-6">
@@ -81,7 +104,7 @@
     <label for="role" class="col-sm-3 control-label">Role</label>
     <div class="col-sm-6">
         <select name="role" id="role" class="form-control">
-            <option value="primary" <?= isset($emp['role']) && $emp['role'] == 'primary' ? 'selected' : ''; ?>>Primary</option>
+            <option value="vendor" <?= isset($emp['role']) && $emp['role'] == 'vendor' ? 'selected' : ''; ?>>Vendor</option>
             <option value="user" <?= isset($emp['role']) && $emp['role'] == 'user' ? 'selected' : ''; ?>>User</option>
         </select>
     </div>
@@ -104,6 +127,15 @@
 
     </div>
 </div>
-
+<script>
+function previewImage(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+        var output = document.getElementById('profile-image-preview');
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+</script>
 
 <?= $this->endSection() ?>

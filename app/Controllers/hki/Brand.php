@@ -24,7 +24,7 @@ class Brand extends BaseController
 
     public function viewBrand()
     {
-        $data['title'] = "Primary | Brand";
+        $data['title'] = "Vendor | Brand";
         $data['page'] = VENDOR . "brand_table";
         $data['page_name'] = "Brand";
     

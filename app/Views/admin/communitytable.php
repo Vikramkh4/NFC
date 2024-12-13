@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <ol class="breadcrumb bc-3">
     <li>
-        <a href="index.html"><i class="entypo-home"></i>Home</a>
+        <a href="<?= base_url(AD.'/') ?>"><i class="entypo-home"></i>Home</a>
     </li>
     <li>
         <a href="tables-main.html">Tables</a>

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/neon-theme.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/neon-forms.css">
     <link rel="stylesheet" href="<?=base_url();?>/assets2/css/custom.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/style.css">
     <script src="<?=base_url();?>/assets2/js/jquery-1.11.3.min.js"></script>
     
 
@@ -44,7 +45,7 @@
 
         <div class="sidebar-menu">
 
-            <div class="sidebar-menu-inner">
+            <div class="sidebar-menu-inner" >
 
                 <header class="logo-env">
 
@@ -86,20 +87,36 @@
                         </a>
 
                     </li>
+                    <!--
                     <li>
                         <a href="<?= base_url(AD . 'blog_list') ?>">
                             <i class="entypo-star"></i>
                             <span class="title">Review</span>
                         </a>
                     </li>
-
+                   -->
+                   <li class="has-sub">
+					<a href="">
+						<i class="entypo-mail"></i>
+						<span class="title">Category</span>
+					</a>
+					<ul>
                     <li>
                         <a href="<?= base_url(AD . 'categoryview') ?>">
                             <i class="entypo-layout"></i>
-                            <span class="title">Category</span>
+                            <span class="title"> View Category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url(AD . 'amenity_table') ?>">
+                            <i class="entypo-attach"></i>
+                            <span class="title">Amenities</span>
                         </a>
 
                     </li>
+					</ul>
+				</li>
+                    
                     <li>
                         <a href="<?= base_url(AD . 'viewtable') ?>">
                             <i class="entypo-basket"></i>
@@ -113,15 +130,9 @@
                         </a>
 
                     </li>
+                    
                     <li>
-                        <a href="<?= base_url(AD . 'amenity_table') ?>">
-                            <i class="entypo-layout"></i>
-                            <span class="title">Amenities</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="<?= base_url(AD . 'cummunitytable') ?>" target="_blank">
+                        <a href="<?= base_url(AD . 'cummunitytable') ?>" >
                             <i class="entypo-user"></i>
                             <span class="title">User Add Community Table</span>
                         </a>
@@ -132,7 +143,6 @@
                             <span class="title">Community</span>
                         </a>
                     </li>
-                    
                     <li>
                         <a href="<?= base_url(AD . 'user') ?>">
                             <i class="entypo-users"></i>

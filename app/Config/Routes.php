@@ -22,9 +22,9 @@ $routes->group("admin", ["filter" => "auth"], function ($routes) {
      $routes->match(['get','post'],"adduser","admin\Admin::adduser");
      $routes->match(['get','post'],"edituser/(:num)","admin\Admin::edituser/$1");
      $routes->match(['get','post'],"deleteuser/(:num)","admin\Admin::deleteuser/$1");
+     $routes->match(['get','post'],"viewuser/(:num)","admin\Admin::viewuser/$1");
 
-
-     $routes->get("/amenities", "admin\Amenities::index");
+     $routes->match(['get','post'],"amenities", "admin\Amenities::index");
       
      $routes->match(['get','post'],"storeamt","admin\Amenities::store_amenities");  
      $routes->match(['get','post'],"amenity_table","admin\Amenities::show");
@@ -44,7 +44,7 @@ $routes->group("admin", ["filter" => "auth"], function ($routes) {
      $routes->match(['get','post'],"editbrand/(:num)","admin\Brand::editbrand/$1"); 
      //end brand part
     
-     $routes->get("/banner", "admin\Banner::index");
+     $routes->match(['get', 'post'], "banner", "admin\Banner::index");
     $routes->match(['get', 'post'], "storeban", "admin\Banner::store_banner");  
     $routes->match(['get', 'post'], "banner_table", "admin\Banner::show");
     $routes->match(['get', 'post'], "edit_banner/(:num)", "admin\Banner::edit/$1");
@@ -77,10 +77,23 @@ $routes->group("admin", ["filter" => "auth"], function ($routes) {
      $routes->match(['get','post'],'viewtable','admin\Market::viewtable');
      $routes->match(['get','post'],'edit_market/(:num)','admin\Market::edit_market/$1');
      $routes->POST('update_market/(:num)','admin\Market::update_market/$1');
-     $routes->get('delete_market/(:num)','admin\Market::delete_market/$1');
+     $routes->POST('delete_market/(:num)','admin\Market::delete_market/$1');
 
 
-     
+     $routes->match(['get', 'post'], 'enquiry', 'adminadmin\Enquiry::index');
+
+     // Route to submit a new enquiry
+     $routes->match(['get', 'post'], 'enquirysubmit', 'admin\Enquiry::submit');
+ 
+     // Route to view all enquiries in a list
+     $routes->match(['get', 'post'], 'enquiryview', 'admin\Enquiry::view');
+ 
+     // Route to show details of a specific enquiry
+     $routes->match(['get', 'post'], 'enquiryshow/(:num)', 'admin\Enquiry::show/$1');
+ 
+     // Route to update the status of a specific enquiry
+     $routes->post('enquiryupdateStatus/(:num)', 'admin\Enquiry::updateStatus/$1');
+     $routes->get('enquirydelete/(:num)', 'admin\Enquiry::delete/$1');
     // start community
     $routes->match(['get','post'],"community","admin\Community::viewtable");
 $routes->match(['get','post'],"addcommunity","admin\Community::add_cummunity");

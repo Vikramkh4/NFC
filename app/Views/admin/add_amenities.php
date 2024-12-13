@@ -4,11 +4,18 @@
 
 <!-- Page content -->
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
         <div class="panel panel-primary" >
             <div class="panel-heading">
                 <div class="panel-title">
-                   <h1> <?= $page_name ?></h1>
+                   <h2> <?= $page_name ?></h2>
+                </div>
+                <div class="panel-options">
+                    <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i
+                            class="entypo-cog"></i></a>
+                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                    <a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
+                    <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
                 </div>
             </div>
             <div class="panel-body">

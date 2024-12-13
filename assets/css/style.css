@@ -1,0 +1,70 @@
+
+/* Profile section styling */
+.profile {
+    text-align: center;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile header styling */
+.profile h4 {
+    font-size: 20px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 5px;
+}
+
+.profile h6 {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Avatar container styling */
+.avatar-container {
+    position: relative;
+    display: inline-block;
+    padding: 4px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Avatar image styling */
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+/* List group styling */
+.list-group {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-group-item {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    background-color: #fff;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.list-group-item b {
+    font-weight: bold;
+    color: #333;
+}
+
+.list-group-item .pull-right {
+    font-size: 13px;
+    color: #666;
+}

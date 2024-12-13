@@ -4,10 +4,10 @@
 
 <ol class="breadcrumb bc-3">
     <li>
-        <a href="index.html"><i class="entypo-home"></i>Home</a>
+        <a href="<?= base_url(VD.'/') ?>"><i class="entypo-home"></i>Home</a>
     </li>
     <li>
-        <a href="tables-main.html">Tables</a>
+        <a href="">Tables</a>
     </li>
     <li class="active">
         <strong> Brand Table</strong>
@@ -74,13 +74,15 @@ jQuery(document).ready(function($) {
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-bordered datatable" id="table-1">
-                        <thead>
+                    <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
-                                
+                                <th>Market Area</th>
+                                <th>Category</th>
                                 <th>Email</th>
                                 <th>Phone No</th>
+                                <th>Whatsapp No.</th>
                                 <th>Image</th>
                                 <th>Address</th>
                                 <th>Website</th>
@@ -95,16 +97,23 @@ jQuery(document).ready(function($) {
                         <tbody>
                             <?php foreach ($brand as $key => $emp): ?>
                                 <tr>
-                                    <td><?= $key + 1 ?></td>
+                                <td><?= $key + 1 ?></td>
                                     <td><?= $emp['name'] ?></td>
-                                    
+                                    <td><?= $emp['market'] ?></td>
+                                    <td><?= $emp['category'] ?></td>
                                     <td><?= $emp['email'] ?></td>
                                     <td><?= $emp['phone_no'] ?></td>
+                                    <td><?= $emp['whatsapp_no'] ?></td>
                                     <td><img src="<?=base_url("/uploads/$emp[logo]")?>" width="70" alt="logo"></td>
                                     <td><?= $emp['address'] ?></td>
                                     <td><a target="_blank" href="<?= $emp['website'] ?>">Website</a></td>
-                                    <td><a target="_blank" href="<?= $emp['google_review'] ?>">Reviews</a></td>
-                                    <td><a target="_blank" href="<?= $emp['enqlink'] ?>">Enquire Link</a></td>
+                                    <td><a href="<?= base_url(VD); ?>review?brand_id=<?=$emp['id']?>" class="btn btn-blue  ">
+                                        Reviews</a></td>
+                                    <td>
+                                    <a href="<?= base_url(VD); ?>enquiryview?brand_id=<?=$emp['id']?>" class="btn btn-blue btn-icon icon-left">
+                                            <i class="entypo-suitcase"></i> Enquire Link
+                                        </a>
+                                </td>
                                     <td>
                                         <a href="<?= $emp['twitter'] ?>"><i class="entypo-twitter"></i></a>
                                         <a href="<?= $emp['instagram'] ?>"><i class="entypo-instagram"></i></a>
@@ -134,11 +143,13 @@ jQuery(document).ready(function($) {
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Id</th>
+                            <th>Id</th>
                                 <th>Name</th>
-                                
+                                <th>Market Area</th>
+                                <th>Category</th>
                                 <th>Email</th>
                                 <th>Phone No</th>
+                                <th>Whatsapp No.</th>
                                 <th>Image</th>
                                 <th>Address</th>
                                 <th>Website</th>
